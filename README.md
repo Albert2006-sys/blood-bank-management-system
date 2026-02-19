@@ -11,13 +11,13 @@ A complete, production-ready **Blood Bank Management System** built with the **M
 - [Running the Application](#running-the-application)
 - [API Documentation](#api-documentation)
 - [Screenshots](#screenshots)
--[License](#license)
+- [License](#license)
 
 ---
 
 ## ✨ Features
 
-###🔹 **Core Functionality**
+### 🔹 **Core Functionality**
 - **Donor Management**: Add, edit, delete, and filter donors by blood group and gender
 - **Patient Management**: Register patients and manage blood requests
 - **Blood Inventory**: Real-time tracking of blood units by blood group with visual indicators
