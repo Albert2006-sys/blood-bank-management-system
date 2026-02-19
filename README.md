@@ -292,29 +292,6 @@ http://localhost:4200
 
 ---
 
-## 📸 Screenshots
-
-### **Dashboard**
-- Total Donors, Patients, and Blood Units cards
-- Blood Inventory Bar Chart
-- Recent Donations Table
-
-### **Donor Management**
-- Searchable, filterable donor list
-- Add/Edit donor form with validation
-- Delete confirmation
-
-### **Patient Management**
-- Patient list with blood request status badges
-- Blood request button (auto-approves/rejects)
-- Add patient form
-
-### **Inventory Page**
-- Blood bank information
-- Color-coded inventory table
-  - 🟢 Green: Adequate stock (≥10 units)
-  - 🟡 Yellow: Low stock (5-9 units)
-  - 🔴 Red: Critical (<5 units)
 
 ### **Reports**
 - Inventory summary
@@ -336,11 +313,7 @@ http://localhost:4200
 
 ## 🔧 Configuration
 
-### **Backend (.env)**
-```
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/bloodbankdb
-```
+
 
 ### **Frontend (environment.ts)**
 ```typescript
