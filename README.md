@@ -1,418 +1,105 @@
-# 🩸 Blood Bank Management System
+# Blood Bank Management System
 
-A complete, production-ready **Blood Bank Management System** built with the **MEAN Stack** (MongoDB, Express.js, Angular, Node.js).
+A robust, full-stack web application designed to streamline blood bank operations. Built with the **MEAN Stack** (MongoDB, Express, Angular, Node.js), this system handles everything from donor registration and blood inventory management to patient requests and inter-hospital transfers.
 
-## 📋 Table of Contents
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
-- [Running the Application](#running-the-application)
-- [API Documentation](#api-documentation)
-- [Screenshots](#screenshots)
-- [License](#license)
+It was developed to replace manual record-keeping with a modern, digital solution that ensures real-time tracking, safety, and efficiency in the blood supply chain.
 
 ---
 
-## ✨ Features
+## 🚀 Key Features
 
-### 🔹 **Core Functionality**
-- **Donor Management**: Add, edit, delete, and filter donors by blood group and gender
-- **Patient Management**: Register patients and manage blood requests
-- **Blood Inventory**: Real-time tracking of blood units by blood group with visual indicators
-- **Blood Request System**: Automated approval/rejection based on inventory availability
-- **Reports & Analytics**: Dashboard with charts and statistics
-- **Responsive Design**: Professional red & white theme, mobile-friendly interface
+### Core Modules
+*   **Donor Management**: Complete profile management for donors, including donation history and eligibility tracking.
+*   **Patient & Requests**: Hospital staff can register patients and raise blood requests, which are automatically validated against current inventory.
+*   **Inventory Control**: Real-time tracking of blood units, categorized by **Blood Group** (A+, B-, etc.) and **Component** (Whole Blood, Platelets, Plasma).
+*   **Smart Allocation**: Uses a **FIFO (First-In-First-Out)** algorithm to allocate the oldest valid blood unit first, minimizing wastage.
 
-### 🔹 **Business Logic**
-- ✅ **Donor Registration** → Automatically increments blood inventory
-- ✅ **Blood Request Approval** → Checks inventory; approves if available, rejects if not
-- ✅ **Inventory Updates** → Real-time updates on donations and requests
-- ✅ **Visual Indicators** → Color-coded stock levels (Red: Critical, Yellow: Low, Green: Adequate)
-
----
-
-## 🛠 Tech Stack
-
-### **Backend**
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **MongoDB** - NoSQL database
-- **Mongoose** - ODM for MongoDB
-- **dotenv** - Environment variable management
-- **CORS** - Cross-origin resource sharing
-
-### **Frontend**
-- **Angular 20+** - Frontend framework
-- **Bootstrap 5** - CSS framework
-- **Chart.js** - Data visualization
-- **TypeScript** - Type-safe JavaScript
-- **RxJS** - Reactive programming
+### Advanced Capabilities
+*   **Real-Time Dashboard**: Live updates on blood stock, total donations, and pending requests using **Socket.io**.
+*   **Expiry Management**: Automated flagging of expired blood units based on component shelf life (e.g., Platelets = 5 days).
+*   **Donor Portal**: A dedicated interface for donors to view their donation history, book appointments, and download digital certificates.
+*   **Reporting**: Generate downloadable **PDF** and **Excel** reports for audits and administrative review.
+*   **Role-Based Access**: Secure login with distinct roles for **Admins**, **Staff**, and **Donors**.
 
 ---
 
-## 📁 Project Structure
+## �️ Technology Stack
 
-```
-Blood_Bank/
-│
-├── backend/                # Backend API (Node.js + Express)
-│   ├── config/
-│   │   └── db.js          # MongoDB connection
-│   ├── controllers/       # Business logic
-│   │   ├── donorController.js
-│   │   ├── patientController.js
-│   │   ├── bloodBankController.js
-│   │   └── reportController.js
-│   ├── models/            # Mongoose schemas
-│   │   ├── Donor.js
-│   │   ├── Patient.js
-│   │   ├── BloodBank.js
-│   │   ├── Blood.js
-│   │   └── ...
-│   ├── routes/            # API routes
-│   │   ├── donorRoutes.js
-│   │   ├── patientRoutes.js
-│   │   ├── bloodBankRoutes.js
-│   │   └── reportRoutes.js
-│   ├── middleware/
-│   │   └── errorHandler.js
-│   ├── .env               # Environment variables
-│   ├── server.js          # Express server
-│   ├── seed.js            # Database seeder
-│   └── package.json
-│
-└── frontend/              # Frontend (Angular)
-    ├── src/
-    │   ├── app/
-    │   │   ├── components/
-    │   │   │   ├── navbar/
-    │   │   │   ├── dashboard/
-    │   │   │   ├── donors/
-    │   │   │   ├── patients/
-    │   │   │   ├── inventory/
-    │   │   │   ├── reports/
-    │   │   │   ├── loading-spinner/
-    │   │   │   └── toast/
-    │   │   ├── services/
-    │   │   │   ├── donor.service.ts
-    │   │   │   ├── patient.service.ts
-    │   │   │   ├── blood-bank.service.ts
-    │   │   │   ├── report.service.ts
-    │   │   │   └── toast.service.ts
-    │   │   ├── models/
-    │   │   │   └── models.ts
-    │   │   ├── app.routes.ts
-    │   │   └── app.ts
-    │   ├── environments/
-    │   │   └── environment.ts
-    │   └── styles.css
-    ├── angular.json
-    └── package.json
-```
+*   **Frontend**: Angular 19, TypeScript, RxJS, Bootstrap 5
+*   **Backend**: Node.js, Express.js
+*   **Database**: MongoDB (Atlas/Local) with Mongoose
+*   **Real-Time**: Socket.io
+*   **Authentication**: JWT (JSON Web Tokens) & BCrypt
+*   **Tools**: PDFKit (Certificates), ExcelJS (Reports)
 
 ---
 
-## 📦 Prerequisites
+## ⚙️ Installation & Setup
 
-Before you begin, ensure you have the following installed:
+Follow these steps to get the project running on your local machine.
 
-- **Node.js** (v18.x or higher) - [Download](https://nodejs.org/)
-- **MongoDB** (v6.x or higher) - [Download](https://www.mongodb.com/try/download/community)
-- **Angular CLI** (v20.x) - Install via: `npm install -g @angular/cli`
-- **Git** (optional) - [Download](https://git-scm.com/)
+### Prerequisites
+*   Node.js (v18+)
+*   MongoDB (running locally or a cloud URI)
+*   Angular CLI (`npm install -g @angular/cli`)
 
----
-
-## 🚀 Installation & Setup
-
-### **1. Clone the Repository** (or download ZIP)
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/blood-bank-system.git
-cd blood-bank-system
+git clone https://github.com/Albert2006-sys/blood-bank-management-system.git
+cd blood-bank-management-system
 ```
 
-### **2. Backend Setup**
-
+### 2. Backend Setup
 ```bash
-# Navigate to backend directory
 cd backend
-
-# Install dependencies
 npm install
 ```
+*   Create a `.env` file in the `backend` folder:
+    ```env
+    PORT=3000
+    MONGODB_URI=mongodb://localhost:27017/bloodbank
+    JWT_SECRET=your_secret_key
+    ```
+*   Start the server:
+    ```bash
+    npm run dev
+    ```
 
-**Configure Environment Variables:**
-The `.env` file is already created with:
-```
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/bloodbankdb
-```
-
-**Ensure MongoDB is Running:**
+### 3. Frontend Setup
+Open a new terminal via project root:
 ```bash
-# Start MongoDB service
-# On Windows (if installed as service):
-net start MongoDB
-
-# On macOS/Linux:
-sudo systemctl start mongod
-# or
-brew services start mongodb-community
-```
-
-### **3. Frontend Setup**
-
-```bash
-# Navigate to frontend directory (from project root)
 cd frontend
-
-# Install dependencies
 npm install
+ng serve
 ```
+*   The application will be available at `http://localhost:4200`.
 
----
-
-## ▶️ Running the Application
-
-### **Step 1: Seed the Database**
-
+### 4. Seed Database (Optional)
+To populate the database with sample donors, patients, and inventory:
 ```bash
-# From the backend directory
 cd backend
 npm run seed
 ```
 
-**Expected Output:**
-```
-✅ MongoDB Connected: localhost
-🗑️  Existing data cleared
-🏦 Blood Bank created
-👥 5 Donors created
-🏥 3 Patients created
-
-✨ Database seeded successfully!
-```
-
-### **Step 2: Start the Backend Server**
-
-```bash
-# From the backend directory
-npm run dev
-```
-
-**Expected Output:**
-```
-🚀 Server running on port 3000
-✅ MongoDB Connected: localhost
-```
-
-**Backend is now running at:** `http://localhost:3000`
-
-### **Step 3: Start the Frontend (Angular)**
-
-Open a **new terminal window**:
-
-```bash
-# From the frontend directory
-cd frontend
-ng serve
-```
-
-**Expected Output:**
-```
-✔ Browser application bundle generation complete.
-
-Initial Chunk Files | Names         |  Raw Size
-main.js             | main          |   1.2 MB |
-
-Application bundle generation complete. [1.234 seconds]
-
-Watch mode enabled. Watching for file changes...
-➜ Local:   http://localhost:4200/
-```
-
-**Frontend is now running at:** `http://localhost:4200`
-
-### **Step 4: Open the Application**
-
-Open your browser and navigate to:
-```
-http://localhost:4200
-```
-
 ---
 
-## 📡 API Documentation
+## � API Documentation
 
-### **Base URL:** `http://localhost:3000/api`
+The backend exposes a RESTful API. Here are a few key endpoints:
 
-### **Donor Endpoints**
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/donors` | Get all donors (supports query params: `bloodGroup`, `gender`, `search`) |
-| GET | `/donors/:id` | Get a single donor by ID |
-| POST | `/donors` | Create a new donor (auto-increments inventory) |
-| PUT | `/donors/:id` | Update a donor |
-| DELETE | `/donors/:id` | Delete a donor |
-
-### **Patient Endpoints**
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/patients` | Get all patients (supports query params: `bloodGroup`, `search`) |
-| GET | `/patients/:id` | Get a single patient by ID |
-| POST | `/patients` | Create a new patient |
-| PUT | `/patients/:id` | Update a patient |
-| DELETE | `/patients/:id` | Delete a patient |
-| POST | `/patients/:id/request-blood` | Request blood (approves/rejects based on inventory) |
-
-### **BloodBank Endpoints**
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/bloodbank/inventory` | Get current blood inventory |
-| PUT | `/bloodbank/inventory` | Update blood inventory |
-
-### **Report Endpoints**
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/reports/inventory` | Get inventory report |
-| GET | `/reports/donations` | Get donations report (grouped by blood group) |
-| GET | `/reports/dashboard` | Get dashboard statistics |
-
-### **Example API Response Format:**
-```json
-{
-  "success": true,
-  "data": { ... },
-  "message": "Operation successful"
-}
-```
+| :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | User authentication |
+| `GET` | `/api/bloodbank/inventory` | Fetch current stock levels |
+| `POST` | `/api/donors` | Register a new donor |
+| `POST` | `/api/patients/:id/request` | Process a blood request |
 
 ---
 
-## 📸 Screenshots
+## �️ License
 
-### **Dashboard**
-- Total Donors, Patients, and Blood Units cards
-- Blood Inventory Bar Chart
-- Recent Donations Table
-
-### **Donor Management**
-- Searchable, filterable donor list
-- Add/Edit donor form with validation
-- Delete confirmation
-
-### **Patient Management**
-- Patient list with blood request status badges
-- Blood request button (auto-approves/rejects)
-- Add patient form
-
-### **Inventory Page**
-- Blood bank information
-- Color-coded inventory table
-  - 🟢 Green: Adequate stock (≥10 units)
-  - 🟡 Yellow: Low stock (5-9 units)
-  - 🔴 Red: Critical (<5 units)
-
-### **Reports**
-- Inventory summary
-- Donations by blood group (Pie chart + Table)
+This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🧪 Testing the Application
-
-1. **Add a Donor**: Navigate to Donors → Add Donor → Fill form → Save
-   - ✅ Verify inventory increases for that blood group
-2. **Request Blood**: Navigate to Patients → Request Blood for a patient
-   - ✅ If inventory > 0 → Status = "Approved", inventory decreases
-   - ✅ If inventory = 0 → Status = "Rejected"
-3. **Check Dashboard**: Verify stats update in real-time
-4. **View Reports**: Check donations distribution chart
-
----
-
-## 🔧 Configuration
-
-### **Backend (.env)**
-```
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/bloodbankdb
-```
-
-### **Frontend (environment.ts)**
-```typescript
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000/api'
-};
-```
-
----
-
-## 📝 Default Seeded Data
-
-- **Blood Bank**: City Blood Bank (Chennai)
-- **Inventory**: 10 units per blood group (A+, A-, B+, B-, AB+, AB-, O+, O-)
-- **Donors**: 5 sample donors
-- **Patients**: 3 sample patients (all with "Pending" status)
-
----
-
-## 🐛 Troubleshooting
-
-### **MongoDB Connection Error**
-- Ensure MongoDB is running: `net start MongoDB` (Windows) or `brew services start mongodb-community` (Mac)
-- Check connection string in `.env`
-
-### **Port Already in Use**
-- Backend: Change `PORT` in `.env`
-- Frontend: Run `ng serve --port 4201`
-
-### **CORS Error**
-- Ensure backend `server.js` has CORS enabled for `http://localhost:4200`
-
-### **Angular Build Errors**
-- Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
-
----
-
-## 🎯 Future Enhancements
-- User authentication & authorization
-- Blood donation appointment scheduling
-- Email/SMS notifications
-- Blood expiry tracking
-- Advanced search filters
-
----
-
-## 👨‍💻 Author
-
-**Your Name**  
-📧 your.email@example.com  
-🌐 [GitHub](https://github.com/yourusername)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-## 🙏 Acknowledgments
-
-- **Angular Team** for the amazing framework
-- **MongoDB** for the powerful database
-- **Chart.js** for beautiful visualizations
-- **Bootstrap** for responsive design
-
----
-
-**⭐ If you found this project helpful, please give it a star!**
-
-```
-Made with ❤️ for college project demo
-```
+> **Note**: This project was developed for educational purposes to demonstrate full-stack development concepts including real-time data handling, complex business logic, and secure authentication flows.
