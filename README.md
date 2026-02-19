@@ -94,12 +94,5 @@ The backend exposes a RESTful API. Here are a few key endpoints:
 | `POST` | `/api/donors` | Register a new donor |
 | `POST` | `/api/patients/:id/request` | Process a blood request |
 
----
-
-## �️ License
-
-This project is open-source and available under the [MIT License](LICENSE).
 
 ---
-
-> **Note**: This project was developed for educational purposes to demonstrate full-stack development concepts including real-time data handling, complex business logic, and secure authentication flows.
